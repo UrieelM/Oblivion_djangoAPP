@@ -1,0 +1,22 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/payment-succesful.css' %}" />
+    <title>Payment Successful</title>
+  </head>
+  <body>
+    <div class="payment-succesful-container">
+      <img src="{% static 'src/imgs/payment-succesful.png' %}" alt="Icon of check" />
+      <h4>Payment Successful</h4>
+      <p>Thank you for your purchase</p>
+      <span>A receipt has been sent to your email</span>
+      <a href="{%url 'home' %}">Return to Home</a>
+    </div>
+  </body>
+</html>

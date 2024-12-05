@@ -1,0 +1,64 @@
+{% load static %}  <!-- Esta línea debe ir al principio del archivo, fuera de cualquier bloque -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krona+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static '/styles/general.css' %}" />
+    <link rel="stylesheet" href="{% block extra_css %}{% endblock %}" />
+    <title>{% block title %}OBLIVION{% endblock %}</title>
+  </head>
+  <body>
+    <!-- Barra de navegación común -->
+    <nav class="nav-container">
+      <div class="content-container">
+        <div class="nav-content-container">
+          <div class="nav-company-name">OBLIVION</div>
+          <div class="nav-links">
+            <ul>
+              <li><a href="#">TOPS</a></li>
+              <li><a href="#">BOTTOMS</a></li>
+              <li><a href="#">SALE</a></li>
+              <li><a href="#">COLLECTIONS</a></li>
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <a href="/cart/" class="nav-buttons--cart">
+              <img src="{% static '/src/icons/cart-outline.svg' %}" alt="Cart icon" />
+            </a>
+            <a href="{% url 'profile' %}" class="nav-buttons--account">Account</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}{% endblock %}  <!-- Aquí irá el contenido específico de cada página -->
+
+    <!-- Footer común -->
+    <footer class="footer-container">
+      <div class="footer-cards-img-container">
+        <img
+          src="{% static '/src/imgs/cards_accepted.png' %}"
+          alt="Images of cards accepted"
+        />
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">2024 CARBON COPY</a></li>
+          <li><a href="#">Refund policy</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Shopping policy</a></li>
+          <li><a href="#">Contact information</a></li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>

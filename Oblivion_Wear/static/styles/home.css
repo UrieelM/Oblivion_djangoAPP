@@ -1,0 +1,118 @@
+.main-container {
+  background-color: var(--dark-strong);
+  color: var(--white);
+  padding-top: 5rem;
+}
+.main-content-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-image-container {
+  height: 95vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-image-container img {
+  width: 70%;
+  border-radius: 30px;
+}
+.main-text-container {
+  position: absolute;
+  top: 18rem;
+  left: 0rem;
+}
+
+.main-text-container h3,
+.main-text-container h1 {
+  font-family: "Krona One";
+  letter-spacing: 1px;
+}
+
+.main-text-container h3 {
+  margin-bottom: 0.6rem;
+  font-weight: 500 !important;
+  font-size: 1.8rem;
+}
+.main-text-container h1 {
+  margin-bottom: 1.2rem;
+  font-weight: 100;
+  font-size: 3.6rem;
+}
+
+.main-text-container p {
+  font-size: 1.8rem;
+  font-weight: 200;
+  margin-bottom: 1rem;
+}
+
+.main-text-container button {
+  font-size: 1.4rem;
+  color: var(--green-neon);
+  font-weight: 200;
+  margin-bottom: 0.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.main-text-container button img {
+  width: 1.2rem;
+}
+
+.promo-black-friday-container {
+  margin: 9.2rem 0;
+}
+
+.promo-black-friday-content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2.4rem;
+}
+
+.promo-black-friday-content-container h2 {
+  font-family: "Krona One";
+  letter-spacing: 1px;
+  font-size: 7.2rem;
+  font-weight: 100;
+}
+
+.promo-black-friday-content-container p {
+  font-family: "Krona One";
+  letter-spacing: 1px;
+  font-size: 3.2rem;
+  font-weight: 100;
+  color: var(--red-neon);
+}
+
+.promo-black-friday-content-container button {
+  background-color: var(--green-neon);
+  padding: 1.4rem 3.6rem;
+  color: var(--dark-strong);
+  font-weight: 400;
+  font-size: 1.4rem;
+  border-radius: 24px;
+}
+
+.latest-collection-promo-container {
+  margin: 12rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.latest-collection-promo-container h4 {
+  font-size: 4.2rem;
+  font-weight: 600;
+  color: var(--dark-light);
+}
+.latest-collection-promo-container img {
+  width: 100%;
+}

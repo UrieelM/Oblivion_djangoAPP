@@ -1,0 +1,60 @@
+.shipping-container {
+  width: 120rem;
+  padding: 15rem 0 10rem 0;
+  margin: 0 auto;
+  gap: 4.8rem;
+}
+.shipping-container h5 {
+  font-size: 4.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.shipping-container p {
+  color: var(--dark-light);
+  font-size: 1.6rem;
+  margin-bottom: 2.4rem;
+}
+
+.shipping-form-container {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 100%;
+}
+.shipping-form-container label {
+  font-size: 14px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+.shipping-form-container input,
+.shipping-form-container select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+.shipping-form-container input::placeholder {
+  color: #bbb;
+}
+.shipping-form-container .shipping-form-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+.shipping-form-container .shipping-form-button button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.shipping-form-container .shipping-form-button button:hover {
+  background-color: #333;
+}

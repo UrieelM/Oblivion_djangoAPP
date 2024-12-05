@@ -1,0 +1,178 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krona+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/cart.css' %}" />
+    <title>OBLIVION</title>
+  </head>
+  <body>
+    <nav class="nav-container">
+      <div class="content-container">
+        <div class="nav-content-container">
+          <div class="nav-company-name">OBLIVION</div>
+          <div class="nav-links">
+            <ul>
+              <li><a href="{% url 'home'%}" style="color: white;" >HOME</a></li>
+              <li><a href="{% url 'generalproducts'%}" style="color: white;" >SALE</a></li>
+              <li><a href="{% url 'shippinginfo'%}" style="color: white;" >SHIPPING INFO</a></li>
+
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'logout'%}" style="color: white;" >LOG OUT</a></li>
+            {% else %}
+              <li><a href="{% url 'login'%}" style="color: white;" >LOG IN</a></li>
+            {% endif %}
+
+
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <a href="/cart/" class="nav-buttons--cart">
+                <img src="{% static '/src/icons/cart-outline.svg' %}" alt="Cart icon" />
+            </a>
+            <a href="{%url 'profile' %}" class="nav-buttons--account">
+                Account
+            </a>
+        </div>
+        
+      </div>
+    </nav>
+    <section class="cart-container">
+      <div class="cart-content">
+        <h5>Your cart</h5>
+        <div class="cart-products-list">
+          <div class="cart-product-item">
+            <div class="cart-product-item-left">
+              <div class="cart-product-item-left-img">
+                <img
+                  src="{% static 'src/imgs/WIND-HASHIRA-PRODUCT-1.jpg' %}"
+                  alt="Product image"
+                />
+              </div>
+              <div class="cart-product-item-left-btns">
+                <div class="cart-product-item-left-btns-remove">x</div>
+                <div class="cart-product-item-left-btns-quantity">
+                  <button class="btns-quantity-button btns-quantity-subtract">
+                    -
+                  </button>
+                  <input
+                    type="text"
+                    class="btns-quantity-value"
+                    value="2"
+                    readonly
+                  />
+                  <button class="btns-quantity-button btns-quantity-add">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="cart-product-item-right">
+              <h6>
+                <p>WIND HA-SHIRA RACING JACKET</p>
+
+                <p>$5990</p>
+              </h6>
+              <p>Carbon copy</p>
+              <span>Size: XL</span>
+            </div>
+          </div>
+          <div class="cart-product-item">
+            <div class="cart-product-item-left">
+              <div class="cart-product-item-left-img">
+                <img
+                  src="{% static 'src/imgs/WIND-HASHIRA-PRODUCT-1.jpg' %}"
+                  alt="Product image"
+                />
+              </div>
+              <div class="cart-product-item-left-btns">
+                <div class="cart-product-item-left-btns-remove">x</div>
+                <div class="cart-product-item-left-btns-quantity">
+                  <button class="btns-quantity-button btns-quantity-subtract">
+                    -
+                  </button>
+                  <input
+                    type="text"
+                    class="btns-quantity-value"
+                    value="2"
+                    readonly
+                  />
+                  <button class="btns-quantity-button btns-quantity-add">
+                    +
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="cart-product-item-right">
+              <h6>
+                <p>WIND HA-SHIRA RACING JACKET</p>
+
+                <p>$5990</p>
+              </h6>
+              <p>Carbon copy</p>
+              <span>Size: XL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cart-summary">
+        <h5>Resume</h5>
+        <div class="cart-summary-subtotal">
+          <p>Subtotal</p>
+          <p>$5990</p>
+        </div>
+        <div class="cart-summary-shipment">
+          <p>Shipment</p>
+          <p>Free</p>
+        </div>
+        <div class="cart-summary-total">
+          <p>Total</p>
+          <p>$5990</p>
+        </div>
+
+        <a href="{% url 'checkout' %}">
+          <button class="btn-proceed-to-pay" style="color: black;">Proceed to payment</button>
+        </a>
+        
+
+      </div>
+    </section>
+  </body>
+  <footer class="footer-container">
+    <div class="footer-cards-img-container">
+      <img
+        src="{% static 'src/imgs/cards_accepted.png' %}"
+        alt="Images of cards accepted"
+      />
+    </div>
+    <div class="footer-links">
+      <ul>
+        <li>
+          <a href="#">2024 OBLIVION</a>
+        </li>
+        <li>
+          <a href="#">Refound policy</a>
+        </li>
+        <li>
+          <a href="#">Privacy policy</a>
+        </li>
+        <li>
+          <a href="#">Terms of service</a></li>
+        <li>
+          <a href="#">Shopping policy</a>
+        </li>
+        <li>
+          <a href="#">Contact information</a>
+        </li>
+      </ul>
+    </div>
+  </footer>
+</html>

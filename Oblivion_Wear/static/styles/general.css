@@ -1,0 +1,217 @@
+/* ========================================= */
+/* General styles */
+/* ========================================= */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+img {
+  width: 10rem;
+}
+
+html {
+  /* font-size: 10px; */
+
+  /* 10px / 16px = 0.625 = 62.5% */
+  /* Percentage of user's browser font-size setting */
+  font-size: 62.5%;
+}
+button {
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+  color: var(--white);
+}
+.hidden {
+  display: none !important;
+}
+
+.content-container {
+  margin: 0 14rem;
+}
+
+/* ========================================= */
+/* General Colors */
+/* ========================================= */
+
+:root {
+  --dark-strong: #000000;
+  --dark-light: #313131;
+  --gray-light: #d4d4d4;
+  --red-neon: #f74171;
+  --green-neon: #c6ff00;
+  --white: #ffffff;
+  --blue: #2e61b2;
+}
+/* ========================================= */
+/* Nav Section */
+/* ========================================= */
+
+.nav-container {
+  background-color: var(--dark-strong);
+  color: var(--white);
+  position: fixed;
+  width: 100%;
+  z-index: 1000;
+}
+
+.nav-content-container {
+  padding: 2.8rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.nav-company-name {
+  font-size: 2.6rem;
+  font-weight: 400;
+}
+
+.nav-links {
+  display: flex;
+}
+.nav-links ul {
+  list-style: none;
+  display: flex;
+  gap: 2.4rem;
+  font-size: 1.4rem;
+}
+.nav-links ul li {
+  transition: all 0.2s;
+}
+
+.nav-links ul li:hover {
+  transform: scale(1.05);
+}
+
+.nav-buttons {
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.nav-buttons--cart {
+  width: 2.8rem;
+}
+.nav-buttons--cart img {
+  width: 100%;
+}
+.nav-buttons--account {
+  background-color: var(--green-neon);
+  padding: 1.4rem 3.6rem;
+  color: var(--dark-strong);
+  font-weight: 400;
+  font-size: 1.4rem;
+  border-radius: 24px;
+}
+/* ========================================= */
+/* Footer Section */
+/* ========================================= */
+
+.footer-container {
+  margin: 14rem 0 4.8rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2rem;
+  flex-direction: column;
+}
+
+.footer-cards-img-container {
+  width: 32rem;
+}
+.footer-cards-img-container img {
+  width: 100%;
+}
+.footer-links ul {
+  list-style: none;
+  display: flex;
+  gap: 2.4rem;
+  justify-content: space-between;
+}
+.footer-links ul li a {
+  font-size: 1.4rem;
+  color: var(--dark-light);
+  font-weight: 200;
+}
+/* ========================================= */
+/* Products Row And Cards */
+/* ========================================= */
+
+.products-row-content-container {
+  display: flex;
+  flex-direction: column;
+}
+.products-row-top-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2.4rem;
+}
+.products-row-top-info--text {
+  font-size: 3.2rem;
+  color: var(--dark-light);
+  font-weight: 700;
+}
+.products-row-top-info--link {
+  background-color: var(--blue);
+  font-weight: 400;
+  font-size: 1.2rem;
+  border-radius: 24px;
+  padding: 1rem 2.4rem;
+  transition: all 0.2s;
+}
+
+.products-row-top-info--link:hover {
+  transform: scale(1.05);
+}
+
+.products-row-products-items {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+.product-card-container {
+  color: var(--dark-strong);
+  transition: all 0.2s;
+}
+.product-card-container:hover {
+  transform: scale(1.02);
+}
+.product-card-img-container {
+  width: 48rem;
+}
+.product-card-img-container img {
+  width: 100%;
+}
+.product-card-content-container {
+  color: var(--dark-light);
+}
+.product-card-content-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.product-card-content-container span {
+  font-size: 1.2rem;
+  font-weight: 200;
+}
+
+.product-card-content-container h6 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+.product-card-content-container p {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--blue);
+}

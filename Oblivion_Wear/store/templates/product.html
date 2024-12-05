@@ -1,0 +1,193 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+ 
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Krona+One&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/product.css' %}" />
+  
+    <title>OBLIVION</title>
+  </head>
+  <body>
+    <nav class="nav-container">
+      <div class="content-container">
+        <div class="nav-content-container">
+          <div class="nav-company-name">OBLIVION</div>
+          <div class="nav-links">
+            <ul>
+              <li><a href="{% url 'home'%}">HOME</a></li>
+              <li><a href="{% url 'generalproducts'%}">SALE</a></li>
+              <li><a href="{% url 'shippinginfo'%}">SHIPPING INFO</a></li>
+
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'logout'%}">LOG OUT</a></li>
+            {% else %}
+              <li><a href="{% url 'login'%}">LOG IN</a></li>
+            {% endif %}
+
+
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <a href="/cart/" class="nav-buttons--cart">
+                <img src="{% static '/src/icons/cart-outline.svg' %}" alt="Cart icon" />
+            </a>
+            <a href="{%url 'profile' %}" class="nav-buttons--account">
+                Account
+            </a>
+        </div>
+        
+        </div>
+      </div>
+
+    </nav>
+
+    <div class="product-container">
+      <div class="content-container">
+        <div class="product-content-container">
+          <a href="javascript:void(0);" onclick="window.history.back();" class="go-home-btn">
+            <img src="{% static 'src/icons/chevron-back-outline.svg' %}" alt="Arrow back" />
+            Go Back
+        </a>
+        
+
+          <div class="product-images-container">
+            <!-- Imagen principal del producto -->
+            <div class="main-image-container">
+              <img src="{{producto.imagen.url}}" alt="Image of jacket" class="main-image"/>
+            </div>
+          
+            <!-- Imágenes adicionales del producto (más grandes) -->
+            {% for imagen in producto.imagenes.all %}
+            <div class="other-image-container">
+              <img src="{{ imagen.imagen.url }}" alt="Other image of product" class="other-image" style="width: 100%; max-width: 900px; height: auto;"/>
+            </div>
+            
+            {% empty %}
+              <p>No additional images available.</p>
+            {% endfor %}
+          </div>
+          
+
+          <div class="product-details-container">
+            <h4>{{ producto.nombre }}</h4>
+            <p>${{ producto.precio }} USD</p>
+            <span>{{ producto.sku}}</span>
+            <span>Black Friday free shipping</span>
+            <span>Size</span>
+            <div class="sizes-container">
+              <button class="size-button">XS</button>
+              <button class="size-button">S</button>
+              <button class="size-button size-button--active">M</button>
+              <button class="size-button">L</button>
+              <button class="size-button">XL</button>
+            </div>
+            
+          
+            <div>
+              <form action="{% url 'cart' %}" method="POST">
+                {% csrf_token %}
+                <button type="submit" class="add-to-cart">Add to cart</button>
+              </form>
+            </div>
+
+
+            <div>
+              <a href="{% url 'generalproducts' %}">
+              <button class="view-more-products">
+                View more products
+                <img
+                  src="{% static 'src/icons/chevron-down-outline-black.svg' %}"
+                  alt="Arrow down"
+                />
+              </button>
+            </a>
+            </div>
+            <div class="product-inventory">
+              <!-- Aquí muestra el inventario del producto -->
+              <p>Available stock: {{ producto.inventario.cantidad }} units</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="product-description-sizes-container">
+          <div class="product-description-sizes-top-text">
+            <p>DETAILS AND SIZES</p>
+          </div>
+          <div class="product-description-sizes-content">
+            <div class="product-description-content">
+              <p>{{ producto.nombre }}</p>
+
+              <ul>
+                <li>100% Cotton Outer Shell</li>
+                <li>16 Embroidered Graphics + Patch Locations</li>
+                <li>3 Fabric Colors used for the outer shell</li>
+                <li>Mesh Interior Lining for breathability and comfort</li>
+                <li>Contrast Piping on seam edges</li>
+                <li>Unique asymmetric paneling and construction based on Sanemi's scars</li>
+                <li>Frayed Edges for a more distressed look over time</li>
+                <li>Drawstring Waist Adjuster</li>
+                <li>Multiple Fabric cut-outs that are sewn back for accent details</li>
+              </ul>
+            </div>
+            <div class="product-sizes-content">
+              <img src="{% static 'src/imgs/sizes.png' %}" alt="Image of sizes" />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <section class="products-row-container">
+      <div class="content-container">
+        <div class="products-row-content-container">
+          <div class="products-row-top-info">
+            <p class="products-row-top-info--text">Best sellers</p>
+            <a href="{% url 'generalproducts' %}" class="products-row-top-info--link" >View All</a>
+          </div>
+          <div class="products-row-products-items">
+            {% for producto in productos|slice:":3" %}
+            <a href="{% url 'product' producto.id_producto %}" class="product-card-container">
+
+
+                <div class="product-card-img-container">
+                  <img src="{{producto.imagen.url}}" alt="Image of jacket" />
+                </div>
+                <div class="product-card-content-container">
+                  <span>{{ producto.sku}}</span>
+                  <h6>{{ producto.nombre }}</h6>
+                  <p>${{ producto.precio }} USD</p>
+                </div>
+              </a>
+            {% endfor %}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-container">
+      <div class="footer-cards-img-container">
+        <img src="{% static 'src/imgs/cards_accepted.png' %}" alt="Images of cards accepted" />
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li><a href="#">2024 OBLIVION</a></li>
+          <li><a href="#">Refund policy</a></li>
+          <li><a href="#">Privacy policy</a></li>
+          <li><a href="#">Terms of service</a></li>
+          <li><a href="#">Shipping policy</a></li>
+          <li><a href="#">Contact information</a></li>
+        </ul>
+      </div>
+    </footer>
+    <script src="{% static 'js/product.js' %}"></script>
+  </body>
+</html>

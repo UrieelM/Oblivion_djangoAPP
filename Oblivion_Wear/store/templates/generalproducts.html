@@ -1,0 +1,124 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
+    <link rel="stylesheet" href="{% static 'styles/general-products.css' %}" />
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="nav-container">
+      <div class="content-container">
+        <div class="nav-content-container">
+          <div class="nav-company-name">OBLIVION</div>
+          <div class="nav-links">
+            <ul>
+              <li><a href="{% url 'home'%}" style="color: white;" >HOME</a></li>
+              <li><a href="{% url 'generalproducts'%}" style="color: white;" >SALE</a></li>
+              <li><a href="{% url 'shippinginfo'%}" style="color: white;" >SHIPPING INFO</a></li>
+
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'logout'%}" style="color: white;" >LOG OUT</a></li>
+            {% else %}
+              <li><a href="{% url 'login'%}" style="color: white;" >LOG IN</a></li>
+            {% endif %}
+
+
+            </ul>
+          </div>
+          <div class="nav-buttons">
+            <a href="/cart/" class="nav-buttons--cart">
+                <img src="{% static '/src/icons/cart-outline.svg' %}" alt="Cart icon" />
+            </a>
+            <a href="{%url 'profile' %}" class="nav-buttons--account">
+                Account
+            </a>
+        </div>
+        
+      </div>
+    </nav>
+
+    <div class="general-products-container">
+      <div class="content-container">
+        <h4>All Results ({{ total_productos }})</h4>
+
+
+        <div class="general-products-content-container">
+
+          <div class="general-products-left-filter">
+            <form method="GET" action="">
+              <p>Filter By:</p>
+              <div class="checkbox-group">
+                {% for categoria in categorias %}
+                <label>
+                  <input type="checkbox" name="category" value="{{ categoria }}"
+                        {% if categoria in categoria_seleccionada %}checked{% endif %} />
+                  {{ categoria }}
+                </label>
+                {% endfor %}
+              </div>
+              <button type="submit">Apply Filters</button>
+            </form>
+            
+            <!-- Enlace para borrar filtros -->
+            <a href="{% url 'generalproducts' %}" class="clear-filters" style="color: black;">Clear Filters</a>
+          </div>
+
+          
+          <div class="general-products-right-results">
+
+            {% for producto in productos %}
+            <a href="{% url 'product' producto.id_producto %}" class="product-card-container">
+
+
+                <div class="product-card-img-container">
+                  <img src="{{producto.imagen.url}}" alt="Image of jacket" />
+                </div>
+                <div class="product-card-content-container">
+                  <span>{{ producto.sku}}</span>
+                  <h6>{{ producto.nombre }}</h6>
+                  <p>${{ producto.precio }} USD</p>
+                </div>
+              </a>
+            {% endfor %}
+            <!-- Repite esto según sea necesario -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer-container">
+      <div class="footer-cards-img-container">
+        <img
+          src="{% static 'src/imgs/cards_accepted.png' %}"
+          alt="Images of cards accepted"
+        />
+      </div>
+      <div class="footer-links">
+        <ul>
+          <li>
+            <a href="#">2024 OBLIVION</a>
+          </li>
+          <li>
+            <a href="#">Refound policy</a>
+          </li>
+          <li>
+            <a href="#">Privacy policy</a>
+          </li>
+          <li>
+            <a href="#">Terms of service</a>
+          </li>
+          <li>
+            <a href="#">Shopping policy</a>
+          </li>
+          <li>
+            <a href="#">Contact information</a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+  </body>
+</html>
