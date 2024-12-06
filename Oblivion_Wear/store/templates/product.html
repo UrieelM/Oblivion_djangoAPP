@@ -13,6 +13,8 @@
     />
     <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/product.css' %}" />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
   
     <title>OBLIVION</title>
   </head>
@@ -37,13 +39,15 @@
             </ul>
           </div>
           <div class="nav-buttons">
-            <a href="/cart/" class="nav-buttons--cart">
+            <a href="{% url 'cart_summary' %}" class="nav-buttons--cart" method="POST">
+              {% csrf_token %}
                 <img src="{% static '/src/icons/cart-outline.svg' %}" alt="Cart icon" />
             </a>
             <a href="{%url 'profile' %}" class="nav-buttons--account">
                 Account
             </a>
         </div>
+
         
         </div>
       </div>
@@ -93,10 +97,7 @@
             
           
             <div>
-              <form action="{% url 'cart' %}" method="POST">
-                {% csrf_token %}
-                <button type="submit" class="add-to-cart">Add to cart</button>
-              </form>
+              <button type="button" value="{{ producto.id_producto }}" id="add-cart" class="add-to-cart">Add to cart</button>
             </div>
 
 
@@ -189,5 +190,31 @@
       </div>
     </footer>
     <script src="{% static 'js/product.js' %}"></script>
+
+    <script>
+      $(document).on('click', '#add-cart', function(e){
+        e.preventDefault();
+        $.ajax({
+          type: 'POST',
+          url: '{% url 'cart_add' %}',
+          data: {
+            product_id: $('#add-cart').val(),
+            csrfmiddlewaretoken: '{{ csrf_token }}',
+            action: 'post'
+          },
+
+            success: function(json){
+              console.log(json)
+            },
+
+            error: function(xhr, errmsg, err){
+              
+            }
+
+        });
+      })
+    </script>
+
+
   </body>
 </html>

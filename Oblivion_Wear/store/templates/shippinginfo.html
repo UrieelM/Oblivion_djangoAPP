@@ -17,20 +17,31 @@
           <div class="nav-company-name">OBLIVION</div>
           <div class="nav-links">
             <ul>
-              <li><a href="#">TOPS</a></li>
-              <li><a href="#">BOTTOMS</a></li>
-              <li><a href="#">SALE</a></li>
-              <li><a href="#">COLLECTIONS</a></li>
+              <li><a href="{% url 'home'%}">HOME</a></li>
+              <li><a href="{% url 'generalproducts'%}">SALE</a></li>
+              <li><a href="{% url 'shippinginfo'%}">SHIPPING INFO</a></li>
+
+              {% if user.is_authenticated %}
+              <li><a href="{% url 'logout'%}">LOG OUT</a></li>
+            {% else %}
+              <li><a href="{% url 'login'%}">LOG IN</a></li>
+            {% endif %}
+
+
             </ul>
           </div>
           <div class="nav-buttons">
-            <div class="nav-buttons--cart">
-              <img src="{% static 'src/icons/cart-outline.svg' %}" alt="Cart icon" />
-            </div>
-            <div class="nav-buttons--account">Account</div>
-          </div>
+            <a href="/cart/" class="nav-buttons--cart">
+                <img src="{% static '/src/icons/cart-outline.svg' %}" alt="Cart icon" />
+            </a>
+            <a href="{%url 'profile' %}" class="nav-buttons--account">
+                Account
+            </a>
+        </div>
+        
         </div>
       </div>
+
     </nav>
     <section class="shipping-container">
       <h5>Shipping Information</h5>

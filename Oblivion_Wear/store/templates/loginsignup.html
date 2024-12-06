@@ -24,7 +24,7 @@
         <form method="POST" action="{% url 'login' %}">
           {% csrf_token %}
           <h1>Create Account</h1>
-          <span>or use your email for registration</span>
+          <span>or use your user for registration</span>
           <input type="text" placeholder="Username" name="username" required/>
           <input type="password" placeholder="Password" name="password" required/>
           <button type="submit" name="signup">Sign Up</button>
