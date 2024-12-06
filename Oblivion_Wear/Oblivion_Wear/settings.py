@@ -68,10 +68,15 @@ WSGI_APPLICATION = 'Oblivion_Wear.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'postgres',
+        'USER': 'postgres.iykgqvuqppxyyhcttsvv',
+        'PASSWORD': 'YahirHernandezz123',
+        'HOST': 'aws-0-us-west-1.pooler.supabase.com',  # Ejemplo: db.supabase.co
+        'PORT': '6543',  # Puerto estándar de PostgreSQL
     }
 }
+
 
 
 # Password validation

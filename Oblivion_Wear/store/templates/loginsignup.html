@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="{% static 'styles/general.css' %}" />
     <link rel="stylesheet" href="{% static 'styles/login-signup.css' %}" />
-    <title>Document</title>
+    
+    <title>OBLIVION</title>
   </head>
+
   <body>
     <nav class="nav-container">
       <div class="content-container">
@@ -73,7 +75,20 @@
           <li><a href="#">Contact information</a></li>
         </ul>
       </div>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="" role="alert">
+        {{ message }}
+        <button type="button" class="" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      {% endfor %}
+    {% endif %}
+
     </footer>
     <script src="{% static 'js/login-signin.js' %}"></script>
+
+    
   </body>
 </html>

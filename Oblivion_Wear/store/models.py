@@ -31,12 +31,13 @@ class Producto(models.Model):
     color = models.CharField(max_length=50, blank=True, null=True)
     imagen = models.ImageField(upload_to="uploads/producto/", blank=True, null=True)
     categoria = models.ForeignKey(Categoria, on_delete=models.CASCADE, related_name="productos")
-
+    
     def __str__(self):
         return f"{self.nombre} ({self.sku})"
 
 
 class ImagenProducto(models.Model):
+    id_imagen = models.AutoField(primary_key=True)
     producto = models.ForeignKey(Producto, related_name="imagenes", on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to="uploads/producto/", blank=True, null=True)
     
